@@ -229,21 +229,21 @@
       <div class="eyebrow">WarpDownload Legal</div>
       <h1>Privacy Policy</h1>
       <p>
-        This Privacy Policy explains how WarpDownload handles information when you use the macOS app, supported browser integrations including the optional WarpDownload Chrome extension, the optional local browser bridge, optional iCloud queue sync, and Apple-managed subscription or purchase features.
+        This Privacy Policy explains how WarpDownload handles information when you use the macOS app, supported browser integrations including the optional WarpDownload Chrome extension, the optional local browser bridge, optional iCloud sync features, Spotlight indexing, and Apple-managed subscription or purchase features.
       </p>
       <div class="meta">
-        <span><strong>Effective date:</strong> April 1, 2026</span>
+        <span><strong>Effective date:</strong> April 6, 2026</span>
         <span><strong>Applies to:</strong> WarpDownload for macOS and supported WarpDownload browser integrations</span>
         <span><strong>Approach:</strong> Local-first, user-controlled features</span>
       </div>
       <div class="summary">
         <div class="summary-item">
           <strong>Most data stays on your Mac</strong>
-          <span>WarpDownload stores download history, preferences, tags, receipts, and recovery state locally unless you explicitly enable sharing features.</span>
+          <span>WarpDownload stores download history, preferences, tags, receipts, diagnostics, and recovery state locally unless you explicitly enable sharing features.</span>
         </div>
         <div class="summary-item">
           <strong>Sensitive sync and browser data are opt-in</strong>
-          <span>Cookies, authorization headers, and referrers are excluded from browser capture and iCloud queue sync by default.</span>
+          <span>Cookies, authorization headers, and referrers are excluded from browser capture and iCloud sync by default.</span>
         </div>
         <div class="summary-item">
           <strong>Payments are handled by Apple</strong>
@@ -275,7 +275,7 @@
         <section id="scope" class="card section-card">
           <h2>1. Scope</h2>
           <p>
-            WarpDownload is a macOS download manager. It can receive downloads that you add manually, import in batches, send from supported browser integrations such as the optional WarpDownload Chrome extension, route through the optional local browser bridge, or share across your Macs through optional iCloud queue sync. This Privacy Policy covers the information involved in those features.
+            WarpDownload is a macOS download manager. It can receive downloads that you add manually, import in batches, send from supported browser integrations such as the optional WarpDownload Chrome extension, route through the optional local browser bridge, index completed files for on-device Spotlight search, or share selected metadata across your Macs through optional iCloud sync features. This Privacy Policy covers the information involved in those features.
           </p>
           <p>
             When you use a supported WarpDownload browser integration, the browser integration can send supported download requests to the local WarpDownload app running on the same device through <code>http://127.0.0.1</code>. The browser handoff flow is intended for local-device communication and not for routing those requests through WarpDownload-operated remote servers.
@@ -333,7 +333,26 @@
             Cookies, authorization headers, and referrers are excluded from iCloud sync by default. They are only included if you explicitly opt in.
           </p>
 
-          <h3>2.7 Apple-managed purchase and entitlement data</h3>
+          <h3>2.7 iCloud history and preference sync</h3>
+          <p>
+            If you enable iCloud history sync, WarpDownload can share selected download history metadata across your Macs using Apple's CloudKit private database. Synced history metadata can include the file name, source URL, status, size, dates, tags, workspace label, checksum details, and the device name associated with the record.
+          </p>
+          <p>
+            If you enable iCloud preference sync, WarpDownload can sync a limited set of app preferences through Apple's iCloud key-value storage, such as theme mode, auto-open-completed preference, notification toggles, and the global speed limit setting.
+          </p>
+          <p>
+            Downloaded files themselves are not synced, and local file paths are not shared across your Macs as part of history sync.
+          </p>
+
+          <h3>2.8 Spotlight indexing</h3>
+          <p>
+            WarpDownload can index completed downloads into the macOS Spotlight index on the same Mac so you can find them through system search. Indexed metadata can include the file name, file type, source host name, tags, workspace name, file size, and completion date.
+          </p>
+          <p>
+            WarpDownload does not place the full original download URL, signed query strings, or secret tokens into Spotlight metadata.
+          </p>
+
+          <h3>2.9 Apple-managed purchase and entitlement data</h3>
           <p>
             WarpDownload uses Apple's StoreKit and App Store systems to determine whether a trial, subscription, or lifetime unlock is active. Payment processing, billing information, subscription renewal, and purchase restoration are handled by Apple, not by WarpDownload directly.
           </p>
@@ -345,7 +364,7 @@
             <li>To start, schedule, accelerate, pause, resume, retry, verify, and complete downloads that you request.</li>
             <li>To organize files using your chosen folders, tags, workspaces, naming rules, and post-download actions.</li>
             <li>To maintain download history, receipts, and recovery information so interrupted downloads can continue safely.</li>
-            <li>To support optional features you enable, such as browser-assisted capture, clipboard suggestions, iCloud queue sync, Finder tags, notifications, Music import, and saved credentials.</li>
+            <li>To support optional features you enable, such as browser-assisted capture, clipboard suggestions, iCloud sync, Spotlight indexing, Finder tags, notifications, Music import, and saved credentials.</li>
             <li>To determine access to paid features through Apple's StoreKit APIs.</li>
           </ul>
           <p>
@@ -361,7 +380,7 @@
           <ul>
             <li><strong>Notifications:</strong> WarpDownload requests notification permission only when needed for download alerts or when you test notifications.</li>
             <li><strong>Folder access:</strong> WarpDownload uses standard macOS folder pickers when you choose a save location, default folder, or tag folder. It stores security-scoped bookmarks so it can continue writing to those folders later.</li>
-            <li><strong>iCloud:</strong> iCloud queue sync remains off unless you enable it.</li>
+            <li><strong>iCloud:</strong> iCloud queue sync, history sync, and preference sync remain off unless you enable them.</li>
             <li><strong>Browser bridge:</strong> The local browser bridge remains off unless you enable it.</li>
             <li><strong>Browser integration permissions:</strong> Supported WarpDownload browser integrations may use browser permissions to detect supported downloads, read the current tab URL for manual handoff, store extension settings locally, read site cookies when required for authenticated downloads, and communicate with the local WarpDownload app over localhost.</li>
           </ul>
@@ -377,6 +396,7 @@
             <li><strong>Browser handoff to the local app:</strong> If you use a supported WarpDownload browser integration, the selected download request data is sent to the local WarpDownload app on the same device through localhost so the app can start the download.</li>
             <li><strong>Download requests:</strong> When you download a file, your Mac contacts the file host or source server and may send the request metadata required to complete that request.</li>
             <li><strong>iCloud queue sync:</strong> If you enable iCloud queue sync, pending download jobs are shared through Apple's iCloud infrastructure.</li>
+            <li><strong>iCloud history and preferences sync:</strong> If you enable these features, selected history metadata and a limited set of app preferences are shared through Apple's iCloud infrastructure.</li>
             <li><strong>App Store purchases:</strong> Subscriptions, trials, restores, and entitlement validation are handled through Apple services.</li>
             <li><strong>Support communication:</strong> If you contact support, the information you choose to send will be used to respond to your request.</li>
           </ul>
@@ -392,9 +412,10 @@
           <h2>6. Security and Storage</h2>
           <ul>
             <li>Saved site credentials are stored in the macOS Keychain.</li>
-            <li>Download records, tags, preferences, receipts, and recovery state are stored locally on your Mac.</li>
+            <li>Download records, tags, preferences, receipts, diagnostics logs, and recovery state are stored locally on your Mac.</li>
             <li>Downloaded files are stored in the save locations you choose or authorize.</li>
             <li>The local browser bridge listens only on localhost when enabled and is designed for local-device communication.</li>
+            <li>Spotlight indexing is local to the Mac where indexing is enabled and uses the system Spotlight index on that device.</li>
             <li>Supported WarpDownload browser integrations use bundled extension code and local communication with the app. They are not designed to download or execute remote code as part of the browser-to-app handoff flow.</li>
           </ul>
           <p>
@@ -408,6 +429,7 @@
             <li>You can turn clipboard monitoring on or off in Settings.</li>
             <li>You can enable or disable the local browser bridge in Settings.</li>
             <li>You can keep sensitive browser headers and iCloud request context disabled, or opt in only when needed.</li>
+            <li>You can enable or disable iCloud queue sync, iCloud history sync, and iCloud preference sync in Settings.</li>
             <li>You can install, disable, or remove a supported WarpDownload browser integration through your browser's extension controls.</li>
             <li>You can remove saved credentials from the app's credential manager.</li>
             <li>You can clear iCloud-shared queue items from within the app.</li>
