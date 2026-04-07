@@ -96,10 +96,14 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
+      align-items: stretch;
     }
 
     .card {
       padding: 22px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
     }
 
     .clean-list {
@@ -110,6 +114,41 @@
 
     .clean-list li + li {
       margin-top: 10px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    .hero p,
+    .card p,
+    .card li {
+      max-width: 64ch;
+    }
+
+    .stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      flex: 1;
+    }
+
+    .support-link {
+      word-break: break-word;
+    }
+
+    .callout {
+      margin-top: auto;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: color-mix(in srgb, var(--text) 88%, var(--muted));
     }
 
     code {
@@ -137,30 +176,39 @@
 
     <div class="grid">
       <section class="card">
-        <h2>Contact</h2>
-        <ul class="clean-list">
-          <li><strong>Email:</strong> <a href="mailto:warpdownloader@gmail.com">warpdownloader@gmail.com</a></li>
-          <li><strong>Privacy Policy:</strong> <a href="https://warpdownload.github.io/warpdownload-site/privacy-policy.html">warpdownload.github.io/warpdownload-site/privacy-policy.html</a></li>
-        </ul>
+        <div class="stack">
+          <h2>Contact</h2>
+          <ul class="clean-list">
+            <li><strong>Email:</strong> <a class="support-link" href="mailto:warpdownloader@gmail.com">warpdownloader@gmail.com</a></li>
+            <li><strong>Privacy Policy:</strong> <a class="support-link" href="https://warpdownload.github.io/warpdownload-site/privacy-policy.html">warpdownload.github.io/warpdownload-site/privacy-policy.html</a></li>
+          </ul>
+          <div class="callout">
+            Include the app version and a short note about what you were trying to download so support can help faster.
+          </div>
+        </div>
       </section>
 
       <section class="card">
-        <h2>Common Questions</h2>
-        <ul>
-          <li>WarpDownload is built for direct file URLs, not website scraping or media extraction.</li>
-          <li>Browser handoff is optional and can be enabled from <code>Settings &gt; Browser</code>.</li>
-          <li>Subscriptions, free trials, restores, and lifetime unlocks are handled through Apple’s App Store systems.</li>
-          <li>You can manage or cancel subscriptions from your Apple account subscription settings.</li>
-        </ul>
+        <div class="stack">
+          <h2>Common Questions</h2>
+          <ul>
+            <li>WarpDownload is built for direct file URLs, not website scraping or media extraction.</li>
+            <li>Browser handoff is optional and can be enabled from <code>Settings &gt; Browser</code>.</li>
+            <li>Subscriptions, free trials, restores, and lifetime unlocks are handled through Apple’s App Store systems.</li>
+            <li>You can manage or cancel subscriptions from your Apple account subscription settings.</li>
+          </ul>
+        </div>
       </section>
 
       <section class="card">
-        <h2>Before You Email</h2>
-        <ul>
-          <li>Include the app version shown in <code>Settings &gt; Support</code>.</li>
-          <li>Describe the direct file URL host or download source you are using.</li>
-          <li>Say whether the issue happens with a normal pasted URL, browser handoff, or batch import.</li>
-        </ul>
+        <div class="stack">
+          <h2>Before You Email</h2>
+          <ul>
+            <li>Include the app version shown in <code>Settings &gt; Support</code>.</li>
+            <li>Describe the direct file URL host or download source you are using.</li>
+            <li>Say whether the issue happens with a normal pasted URL, browser handoff, or batch import.</li>
+          </ul>
+        </div>
       </section>
     </div>
   </div>
