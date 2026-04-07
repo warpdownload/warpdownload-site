@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WarpDownload Support</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #0f1115;
+      --panel: #171a20;
+      --muted: #9ea5b3;
+      --text: #f5f7fb;
+      --accent: #2f8cff;
+      --border: rgba(255, 255, 255, 0.08);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f6f8fb;
+        --panel: #ffffff;
+        --muted: #5d6676;
+        --text: #151922;
+        --accent: #1366d6;
+        --border: rgba(15, 17, 21, 0.08);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(47, 140, 255, 0.14), transparent 28%),
+        linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg) 92%, black));
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .wrap {
+      width: min(920px, calc(100% - 32px));
+      margin: 40px auto 56px;
+    }
+
+    .hero,
+    .card {
+      background: color-mix(in srgb, var(--panel) 94%, transparent);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero {
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(47, 140, 255, 0.14);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h1, h2 {
+      line-height: 1.2;
+      margin: 0 0 12px;
+    }
+
+    h1 {
+      margin-top: 16px;
+      font-size: clamp(32px, 4vw, 46px);
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      margin-top: 0;
+    }
+
+    p, li {
+      color: color-mix(in srgb, var(--text) 88%, var(--muted));
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      padding: 22px;
+    }
+
+    .clean-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .clean-list li + li {
+      margin-top: 10px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+      padding: 1px 5px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    a {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="eyebrow">WarpDownload Support</div>
+      <h1>Help for WarpDownload</h1>
+      <p>
+        WarpDownload is a native macOS download manager for direct file links. If you need help with setup, purchases, browser handoff, or a download issue, use the contact details below.
+      </p>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Contact</h2>
+        <ul class="clean-list">
+          <li><strong>Email:</strong> <a href="mailto:warpdownloader@gmail.com">warpdownloader@gmail.com</a></li>
+          <li><strong>Privacy Policy:</strong> <a href="https://warpdownload.github.io/warpdownload-site/privacy-policy.html">warpdownload.github.io/warpdownload-site/privacy-policy.html</a></li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Common Questions</h2>
+        <ul>
+          <li>WarpDownload is built for direct file URLs, not website scraping or media extraction.</li>
+          <li>Browser handoff is optional and can be enabled from <code>Settings &gt; Browser</code>.</li>
+          <li>Subscriptions, free trials, restores, and lifetime unlocks are handled through Apple’s App Store systems.</li>
+          <li>You can manage or cancel subscriptions from your Apple account subscription settings.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Before You Email</h2>
+        <ul>
+          <li>Include the app version shown in <code>Settings &gt; Support</code>.</li>
+          <li>Describe the direct file URL host or download source you are using.</li>
+          <li>Say whether the issue happens with a normal pasted URL, browser handoff, or batch import.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
