@@ -229,10 +229,10 @@
       <div class="eyebrow">WarpDownload Legal</div>
       <h1>Privacy Policy</h1>
       <p>
-        This Privacy Policy explains how WarpDownload handles information when you use the macOS app, supported browser integrations including the optional WarpDownload Chrome extension, the optional local browser bridge, Spotlight indexing, and Apple-managed subscription or purchase features.
+        This Privacy Policy explains how WarpDownload handles information when you use the macOS app, supported browser integrations (Safari extension and optional WarpDownload Chrome extension), the optional local browser bridge, Spotlight indexing, and Apple-managed subscription or purchase features.
       </p>
       <div class="meta">
-        <span><strong>Effective date:</strong> April 8, 2026</span>
+        <span><strong>Effective date:</strong> April 9, 2026</span>
         <span><strong>Applies to:</strong> WarpDownload for macOS and supported WarpDownload browser integrations</span>
         <span><strong>Approach:</strong> Local-first, user-controlled features</span>
       </div>
@@ -275,7 +275,7 @@
         <section id="scope" class="card section-card">
           <h2>1. Scope</h2>
           <p>
-            WarpDownload is a macOS download manager. It can receive downloads that you add manually, import in batches, send from supported browser integrations such as the optional WarpDownload Chrome extension, route through the optional local browser bridge, and index completed files for on-device Spotlight search. This Privacy Policy covers the information involved in those features.
+            WarpDownload is a macOS download manager. It can receive downloads that you add manually, import in batches, send from supported browser integrations such as the Safari extension and the optional WarpDownload Chrome extension, route through the optional local browser bridge, and index completed files for on-device Spotlight search. This Privacy Policy covers the information involved in those features.
           </p>
           <p>
             When you use a supported WarpDownload browser integration, the browser integration can send supported download requests to the local WarpDownload app running on the same device through <code>http://127.0.0.1</code>. The browser handoff flow is intended for local-device communication and not for routing those requests through WarpDownload-operated remote servers.
@@ -316,13 +316,19 @@
 
           <h3>2.5 Browser bridge and browser-assisted capture</h3>
           <p>
-            If you enable the local browser bridge and use a supported WarpDownload browser integration such as the Chrome extension, WarpDownload can receive a locally forwarded payload that may include the URL, file name, MIME type, page title, save path, referrer, cookies, and request headers supplied by the browser integration.
+            If you enable the local browser bridge and use a supported WarpDownload browser integration such as the Safari extension or Chrome extension, WarpDownload can receive a locally forwarded payload that may include the URL, file name, MIME type, page title, save path, referrer, cookies, and request headers supplied by the browser integration.
           </p>
           <p>
             Sensitive browser request data, including cookies and authorization headers, is disabled by default. It is only included if you explicitly enable that behavior in Settings.
           </p>
           <p>
             The browser integration may also read the active tab URL or a supported browser download URL so it can prefill or hand off the download you asked WarpDownload to manage. WarpDownload uses that browser-derived data only for the requested download handoff and related download management features.
+          </p>
+          <p>
+            The Safari extension stores a small amount of operational diagnostic data locally in the browser's own storage (such as whether the content script was recently active or whether a download cancel succeeded). This diagnostic data records only the <strong>hostname</strong> of the relevant site — never the full URL, path, or query string — so your browsing history is not retained in extension storage.
+          </p>
+          <p>
+            The optional <code>cookies</code> permission in the Safari extension is used solely to forward session cookies to the WarpDownload app on the same Mac via localhost (<code>127.0.0.1</code>) so that authenticated downloads work correctly. Cookies are never transmitted to any WarpDownload-operated server or any third party.
           </p>
 
           <h3>2.6 Spotlight indexing</h3>
@@ -394,7 +400,7 @@
             <li>Downloaded files are stored in the save locations you choose or authorize.</li>
             <li>The local browser bridge listens only on localhost when enabled and is designed for local-device communication.</li>
             <li>Spotlight indexing is local to the Mac where indexing is enabled and uses the system Spotlight index on that device.</li>
-            <li>Supported WarpDownload browser integrations use bundled extension code and local communication with the app. They are not designed to download or execute remote code as part of the browser-to-app handoff flow.</li>
+            <li>Supported WarpDownload browser integrations use local communication with the app over localhost. The Safari extension is bundled with the macOS app. The Chrome extension is installed separately through the Chrome Web Store. Neither integration is designed to download or execute remote code as part of the browser-to-app handoff flow.</li>
           </ul>
           <p>
             No method of storage or transmission is completely secure. You are responsible for choosing trusted download sources and protecting access to your Mac, Apple account, and saved credentials.
