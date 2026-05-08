@@ -232,7 +232,7 @@
         This Privacy Policy explains how WarpFetch handles information when you use the macOS app, supported browser integrations (Safari extension and optional WarpFetch Chrome extension), the optional local browser bridge, Spotlight indexing, and Apple-managed subscription or purchase features.
       </p>
       <div class="meta">
-        <span><strong>Effective date:</strong> April 9, 2026</span>
+        <span><strong>Effective date:</strong> May 8, 2026</span>
         <span><strong>Applies to:</strong> WarpFetch for macOS and supported WarpFetch browser integrations</span>
         <span><strong>Approach:</strong> Local-first, user-controlled features</span>
       </div>
@@ -308,13 +308,25 @@
           </p>
           <div class="badge ok">Saved site credentials use macOS Keychain</div>
 
-          <h3>2.4 Clipboard monitoring</h3>
+          <h3>2.4 Remote server profiles and trust records</h3>
+          <p>
+            If you add an FTP, FTPS, or SFTP server profile, WarpFetch stores the profile details you enter locally on your Mac, such as the host name, port, user name, chosen protocol, initial path, and related timestamps.
+          </p>
+          <p>
+            If you choose to trust an SFTP host key or an FTPS certificate, WarpFetch stores the related trust reference or fingerprint locally on your Mac so it can detect when that server identity changes later.
+          </p>
+          <p>
+            If you enable plain FTP and use it with a user name and password, those credentials and the transferred data may be sent to the selected server without transport encryption. WarpFetch warns about this in the app before allowing authenticated plain FTP.
+          </p>
+          <div class="badge warn">Plain FTP is a legacy option and is disabled by default</div>
+
+          <h3>2.5 Clipboard monitoring</h3>
           <p>
             Clipboard monitoring is optional. If you enable it, WarpFetch checks the clipboard for supported direct download links so it can prefill the add-download flow. Clipboard monitoring is intended to detect direct file links, not to read unrelated clipboard contents for analytics or advertising.
           </p>
           <div class="badge warn">Optional feature</div>
 
-          <h3>2.5 Browser bridge and browser-assisted capture</h3>
+          <h3>2.6 Browser bridge and browser-assisted capture</h3>
           <p>
             If you enable the local browser bridge and use a supported WarpFetch browser integration such as the Safari extension or Chrome extension, WarpFetch can receive a locally forwarded payload that may include the URL, file name, MIME type, page title, save path, referrer, cookies, and request headers supplied by the browser integration.
           </p>
@@ -331,7 +343,7 @@
             The optional <code>cookies</code> permission in the Safari extension is used solely to forward session cookies to the WarpFetch app on the same Mac via localhost (<code>127.0.0.1</code>) so that authenticated downloads work correctly. Cookies are never transmitted to any WarpFetch-operated server or any third party.
           </p>
 
-          <h3>2.6 Spotlight indexing</h3>
+          <h3>2.7 Spotlight indexing</h3>
           <p>
             WarpFetch can index completed downloads into the macOS Spotlight index on the same Mac so you can find them through system search. Indexed metadata can include the file name, file type, source host name, tags, workspace name, file size, and completion date.
           </p>
@@ -339,7 +351,7 @@
             WarpFetch does not place the full original download URL, signed query strings, or secret tokens into Spotlight metadata.
           </p>
 
-          <h3>2.7 Apple-managed purchase and entitlement data</h3>
+          <h3>2.8 Apple-managed purchase and entitlement data</h3>
           <p>
             WarpFetch uses Apple's StoreKit and App Store systems to determine whether a trial, subscription, or lifetime unlock is active. Payment processing, billing information, subscription renewal, and purchase restoration are handled by Apple, not by WarpFetch directly.
           </p>
@@ -351,6 +363,7 @@
             <li>To start, schedule, accelerate, pause, resume, retry, verify, and complete downloads that you request.</li>
             <li>To organize files using your chosen folders, tags, workspaces, naming rules, and post-download actions.</li>
             <li>To maintain download history, receipts, and recovery information so interrupted downloads can continue safely.</li>
+            <li>To connect to the FTP, FTPS, or SFTP servers you configure, remember the trust decisions you approve, and warn you when a saved server identity changes.</li>
             <li>To support optional features you enable, such as browser-assisted capture, clipboard suggestions, Spotlight indexing, Finder tags, notifications, Music import, and saved credentials.</li>
             <li>To determine access to paid features through Apple's StoreKit APIs.</li>
           </ul>
@@ -381,11 +394,15 @@
           <ul>
             <li><strong>Browser handoff to the local app:</strong> If you use a supported WarpFetch browser integration, the selected download request data is sent to the local WarpFetch app on the same device through localhost so the app can start the download.</li>
             <li><strong>Download requests:</strong> When you download a file, your Mac contacts the file host or source server and may send the request metadata required to complete that request.</li>
+            <li><strong>Remote server sessions:</strong> If you connect to an FTP, FTPS, or SFTP server, your Mac contacts that server directly and may send the credentials, commands, file paths, and related protocol metadata needed to browse, upload, or download files.</li>
             <li><strong>App Store purchases:</strong> Subscriptions, trials, restores, and entitlement validation are handled through Apple services.</li>
             <li><strong>Support communication:</strong> If you contact support, the information you choose to send will be used to respond to your request.</li>
           </ul>
           <div class="callout">
             <strong>Important:</strong> If you enable sensitive browser capture, cookies, authorization headers, and related session context may be processed so authenticated downloads can work correctly.
+          </div>
+          <div class="callout">
+            <strong>Important:</strong> SFTP and FTPS are designed to protect credentials and file traffic in transit. Plain FTP is a legacy protocol and can expose credentials, file names, and file data to the selected server or network path without transport encryption when you choose to use it.
           </div>
           <div class="callout">
             WarpFetch does not use the browser handoff flow to transmit your selected download requests to WarpFetch-operated remote servers for advertising, profiling, or unrelated analytics.
@@ -396,6 +413,7 @@
           <h2>6. Security and Storage</h2>
           <ul>
             <li>Saved site credentials are stored in the macOS Keychain.</li>
+            <li>Saved SFTP host-key references and FTPS certificate-trust references are stored locally on your Mac so WarpFetch can recognize trusted servers and detect identity changes.</li>
             <li>Download records, tags, preferences, receipts, and recovery state are stored locally on your Mac.</li>
             <li>Downloaded files are stored in the save locations you choose or authorize.</li>
             <li>The local browser bridge listens only on localhost when enabled and is designed for local-device communication.</li>
