@@ -232,7 +232,7 @@
         This Privacy Policy explains how WarpFetch handles information when you use the macOS app, supported browser integrations (Safari extension and optional WarpFetch Chrome extension), the optional local browser bridge, Spotlight indexing, and Apple-managed subscription or purchase features.
       </p>
       <div class="meta">
-        <span><strong>Effective date:</strong> May 8, 2026</span>
+        <span><strong>Effective date:</strong> June 28, 2026</span>
         <span><strong>Applies to:</strong> WarpFetch for macOS and supported WarpFetch browser integrations</span>
         <span><strong>Approach:</strong> Local-first, user-controlled features</span>
       </div>
@@ -249,6 +249,10 @@
           <strong>Payments are handled by Apple</strong>
           <span>Subscriptions, trials, lifetime unlocks, billing, and payment details are processed through Apple's App Store systems.</span>
         </div>
+        <div class="summary-item">
+          <strong>No ads or tracking SDKs</strong>
+          <span>Based on the current app implementation, WarpFetch does not include third-party advertising, analytics, or cross-app tracking SDKs.</span>
+        </div>
       </div>
     </header>
 
@@ -264,9 +268,10 @@
             <li><a href="#sharing">5. When Data Leaves Your Device</a></li>
             <li><a href="#security">6. Security and Storage</a></li>
             <li><a href="#choices">7. Your Choices and Controls</a></li>
-            <li><a href="#children">8. Children's Privacy</a></li>
-            <li><a href="#changes">9. Changes to This Policy</a></li>
-            <li><a href="#contact">10. Contact</a></li>
+            <li><a href="#retention">8. Data Retention And Deletion</a></li>
+            <li><a href="#children">9. Children's Privacy</a></li>
+            <li><a href="#changes">10. Changes to This Policy</a></li>
+            <li><a href="#contact">11. Contact</a></li>
           </ul>
         </nav>
       </aside>
@@ -281,7 +286,10 @@
             When you use a supported WarpFetch browser integration, the browser integration can send supported download requests to the local WarpFetch app running on the same device through <code>http://127.0.0.1</code>. The browser handoff flow is intended for local-device communication and not for routing those requests through WarpFetch-operated remote servers.
           </p>
           <p>
-            This policy does not govern the privacy practices of websites, file hosts, CDNs, cloud providers, or Apple's services. When you download from a third-party source, that source may receive requests from your device according to its own privacy practices.
+            This policy does not govern the privacy practices of websites, file hosts, CDNs, cloud providers, remote servers, browser stores, or Apple's services. When you download from a third-party source or connect to a remote server, that source may receive requests from your device according to its own privacy practices.
+          </p>
+          <p>
+            WarpFetch is intended for downloads, uploads, and file transfers that you are authorized to perform. It is not designed to bypass digital rights management, paywalls, access controls, or third-party service restrictions.
           </p>
         </section>
 
@@ -355,6 +363,15 @@
           <p>
             WarpFetch uses Apple's StoreKit and App Store systems to determine whether a trial, subscription, or lifetime unlock is active. Payment processing, billing information, subscription renewal, and purchase restoration are handled by Apple, not by WarpFetch directly.
           </p>
+
+          <h3>2.9 Local diagnostics logs</h3>
+          <p>
+            If local diagnostics are enabled, WarpFetch can store local troubleshooting logs on this Mac for app lifecycle, scheduler, browser handoff, remote server, and download troubleshooting. Before those logs are stored, WarpFetch is designed to remove URL query values and redact cookies, authorization headers, tokens, API keys, and passwords where those values are recognized.
+          </p>
+          <p>
+            Local diagnostics logs stay on your Mac unless you explicitly export them or choose to send them to support.
+          </p>
+          <div class="badge warn">Diagnostics export is manual</div>
         </section>
 
         <section id="how-we-use-data" class="card section-card">
@@ -364,6 +381,7 @@
             <li>To organize files using your chosen folders, tags, workspaces, naming rules, and post-download actions.</li>
             <li>To maintain download history, receipts, and recovery information so interrupted downloads can continue safely.</li>
             <li>To connect to the FTP, FTPS, or SFTP servers you configure, remember the trust decisions you approve, and warn you when a saved server identity changes.</li>
+            <li>To create local diagnostics when you enable them and to help troubleshoot issues you choose to report.</li>
             <li>To support optional features you enable, such as browser-assisted capture, clipboard suggestions, Spotlight indexing, Finder tags, notifications, Music import, and saved credentials.</li>
             <li>To determine access to paid features through Apple's StoreKit APIs.</li>
           </ul>
@@ -372,6 +390,9 @@
           </p>
           <p>
             Browser-derived data is used only to hand off supported downloads to the local WarpFetch app, preserve authenticated download context when you explicitly opt in, and show browser bridge status. WarpFetch does not sell that data and does not use it for advertising, profiling, or unrelated analytics.
+          </p>
+          <p>
+            WarpFetch does not operate a user-account service for the app and does not use the app to sell personal information, share personal information for cross-context behavioral advertising, or track users across other companies' apps or websites.
           </p>
         </section>
 
@@ -397,6 +418,7 @@
             <li><strong>Remote server sessions:</strong> If you connect to an FTP, FTPS, or SFTP server, your Mac contacts that server directly and may send the credentials, commands, file paths, and related protocol metadata needed to browse, upload, or download files.</li>
             <li><strong>App Store purchases:</strong> Subscriptions, trials, restores, and entitlement validation are handled through Apple services.</li>
             <li><strong>Support communication:</strong> If you contact support, the information you choose to send will be used to respond to your request.</li>
+            <li><strong>Manual diagnostics export:</strong> If you explicitly export diagnostics logs and send them to support, those exported logs leave your Mac as part of your support request.</li>
           </ul>
           <div class="callout">
             <strong>Important:</strong> If you enable sensitive browser capture, cookies, authorization headers, and related session context may be processed so authenticated downloads can work correctly.
@@ -417,6 +439,7 @@
             <li>Download records, tags, preferences, receipts, and recovery state are stored locally on your Mac.</li>
             <li>Downloaded files are stored in the save locations you choose or authorize.</li>
             <li>The local browser bridge listens only on localhost when enabled and is designed for local-device communication.</li>
+            <li>Local diagnostics logs are stored locally when enabled and are designed to redact recognized secrets before persistence.</li>
             <li>Spotlight indexing is local to the Mac where indexing is enabled and uses the system Spotlight index on that device.</li>
             <li>Supported WarpFetch browser integrations use local communication with the app over localhost. The Safari extension is bundled with the macOS app. The Chrome extension is installed separately through the Chrome Web Store. Neither integration is designed to download or execute remote code as part of the browser-to-app handoff flow.</li>
           </ul>
@@ -434,26 +457,44 @@
             <li>You can install, disable, or remove a supported WarpFetch browser integration through your browser's extension controls.</li>
             <li>You can remove saved credentials from the app's credential manager.</li>
             <li>You can delete downloads, history items, tags, workspaces, and local files according to the controls WarpFetch provides.</li>
+            <li>You can clear local diagnostics logs from Settings when diagnostics are enabled.</li>
             <li>You can manage or cancel subscriptions through your App Store account settings.</li>
           </ul>
         </section>
 
+        <section id="retention" class="card section-card">
+          <h2>8. Data Retention And Deletion</h2>
+          <p>
+            WarpFetch keeps local download records, preferences, receipts, tags, workspaces, saved server profiles, trust records, and recovery state for as long as needed to provide the features you use, unless you delete or clear that data through the app, browser extension, macOS, or your browser's controls.
+          </p>
+          <ul>
+            <li>Downloaded files remain in the save locations you choose until you delete them.</li>
+            <li>Saved site credentials remain in the macOS Keychain until you remove them from the app's credential manager or from Keychain Access.</li>
+            <li>Browser extension settings and small operational records remain in the browser's local extension storage until cleared or until the extension is removed.</li>
+            <li>Local diagnostics logs remain on your Mac until you clear them, they rotate according to app behavior, or you uninstall/remove the relevant app data.</li>
+            <li>Support emails and attachments you send may be retained as needed to respond to your request, maintain support records, comply with legal obligations, and protect against abuse.</li>
+          </ul>
+          <p>
+            Because WarpFetch is local-first and does not maintain a WarpFetch user account system, most app data can be controlled directly from your Mac. Uninstalling the app may not automatically remove downloaded files, browser extension storage, saved Keychain credentials, or files you manually exported.
+          </p>
+        </section>
+
         <section id="children" class="card section-card">
-          <h2>8. Children's Privacy</h2>
+          <h2>9. Children's Privacy</h2>
           <p>
             WarpFetch is not directed to children. If you believe information from a child has been provided through the app or related support channels inappropriately, contact us so we can review and address the issue.
           </p>
         </section>
 
         <section id="changes" class="card section-card">
-          <h2>9. Changes to This Policy</h2>
+          <h2>10. Changes to This Policy</h2>
           <p>
             We may update this Privacy Policy when WarpFetch's features, data practices, or legal obligations change. When we make material updates, we will revise the effective date above and publish the updated policy at the privacy-policy URL used by the app.
           </p>
         </section>
 
         <section id="contact" class="card section-card">
-          <h2>10. Contact</h2>
+          <h2>11. Contact</h2>
           <p>
             For privacy questions or support related to WarpFetch, contact:
           </p>
