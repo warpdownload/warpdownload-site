@@ -232,7 +232,7 @@
         This Privacy Policy explains how WarpFetch handles information when you use the macOS app, supported browser integrations (Safari extension and optional WarpFetch Chrome extension), the optional local browser bridge, Spotlight indexing, and Apple-managed subscription or purchase features.
       </p>
       <div class="meta">
-        <span><strong>Effective date:</strong> June 28, 2026</span>
+        <span><strong>Effective date:</strong> November 11, 2026</span>
         <span><strong>Applies to:</strong> WarpFetch for macOS and supported WarpFetch browser integrations</span>
         <span><strong>Approach:</strong> Local-first, user-controlled features</span>
       </div>
@@ -348,7 +348,7 @@
             The Safari extension stores a small amount of operational diagnostic data locally in the browser's own storage (such as whether the content script was recently active or whether a download cancel succeeded). This diagnostic data records only the <strong>hostname</strong> of the relevant site — never the full URL, path, or query string — so your browsing history is not retained in extension storage.
           </p>
           <p>
-            The optional <code>cookies</code> permission in the Safari extension is used solely to forward session cookies to the WarpFetch app on the same Mac via localhost (<code>127.0.0.1</code>) so that authenticated downloads work correctly. Cookies are never transmitted to any WarpFetch-operated server or any third party.
+            The optional <code>cookies</code> permission in the Safari extension is used solely to forward session cookies to the WarpFetch app on the same Mac via localhost (<code>127.0.0.1</code>) so that authenticated downloads work correctly. The extension hands these cookies to the local app. For an authenticated download, the app can send the applicable cookies to the download host as part of the request.
           </p>
 
           <h3>2.7 Spotlight indexing</h3>
@@ -364,6 +364,8 @@
             WarpFetch uses Apple's StoreKit and App Store systems to determine whether a trial, subscription, or lifetime unlock is active. Payment processing, billing information, subscription renewal, and purchase restoration are handled by Apple, not by WarpFetch directly.
           </p>
 
+          <p><strong>Version 2.3 starter access:</strong> The app counts successful starter downloads from all supported sources using local completion receipts in its Application Support data. Each receipt stores a local transfer ID, not a download URL, file name, source host, browser history, or Apple account details. Removing a completed download, deleting the downloaded file, clearing history, or restarting the app does not remove its receipt.</p>
+
           <h3>2.9 Local diagnostics logs</h3>
           <p>
             If local diagnostics are enabled, WarpFetch can store local troubleshooting logs on this Mac for app lifecycle, scheduler, browser handoff, remote server, and download troubleshooting. Before those logs are stored, WarpFetch is designed to remove URL query values and redact cookies, authorization headers, tokens, API keys, and passwords where those values are recognized.
@@ -377,7 +379,7 @@
         <section id="how-we-use-data" class="card section-card">
           <h2>3. How We Use Data</h2>
           <ul>
-            <li>To start, schedule, accelerate, pause, resume, retry, verify, and complete downloads that you request.</li>
+            <li>To start, schedule, accelerate, pause, resume, retry, verify, and complete downloads you request, and to apply the three-download starter allowance.</li>
             <li>To organize files using your chosen folders, tags, workspaces, naming rules, and post-download actions.</li>
             <li>To maintain download history, receipts, and recovery information so interrupted downloads can continue safely.</li>
             <li>To connect to the FTP, FTPS, or SFTP servers you configure, remember the trust decisions you approve, and warn you when a saved server identity changes.</li>
@@ -411,11 +413,12 @@
 
         <section id="sharing" class="card section-card">
           <h2>5. When Data Leaves Your Device</h2>
-          <p>Most WarpFetch data stays on your Mac. Data leaves your device only in the following situations:</p>
+          <p>Most WarpFetch data stays on your Mac. The local handoff and external connections work as follows:</p>
           <ul>
             <li><strong>Browser handoff to the local app:</strong> If you use a supported WarpFetch browser integration, the selected download request data is sent to the local WarpFetch app on the same device through localhost so the app can start the download.</li>
             <li><strong>Download requests:</strong> When you download a file, your Mac contacts the file host or source server and may send the request metadata required to complete that request.</li>
             <li><strong>Remote server sessions:</strong> If you connect to an FTP, FTPS, or SFTP server, your Mac contacts that server directly and may send the credentials, commands, file paths, and related protocol metadata needed to browse, upload, or download files.</li>
+            <li><strong>Update checks and this website:</strong> WarpFetch requests a public update file from this GitHub Pages site and compares the version and build on your Mac. The request does not include your download list or starter allowance. GitHub Pages <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection">logs IP addresses for security</a> when serving requests.</li>
             <li><strong>App Store purchases:</strong> Subscriptions, trials, restores, and entitlement validation are handled through Apple services.</li>
             <li><strong>Support communication:</strong> If you contact support, the information you choose to send will be used to respond to your request.</li>
             <li><strong>Manual diagnostics export:</strong> If you explicitly export diagnostics logs and send them to support, those exported logs leave your Mac as part of your support request.</li>
@@ -457,6 +460,7 @@
             <li>You can install, disable, or remove a supported WarpFetch browser integration through your browser's extension controls.</li>
             <li>You can remove saved credentials from the app's credential manager.</li>
             <li>You can delete downloads, history items, tags, workspaces, and local files according to the controls WarpFetch provides.</li>
+            <li>You can remove WarpFetch's local Application Support data using macOS controls. Doing so removes the local starter-completion receipts and other local app state, while downloaded files, Keychain items, and browser-extension storage may remain separately.</li>
             <li>You can clear local diagnostics logs from Settings when diagnostics are enabled.</li>
             <li>You can manage or cancel subscriptions through your App Store account settings.</li>
           </ul>
@@ -465,9 +469,10 @@
         <section id="retention" class="card section-card">
           <h2>8. Data Retention And Deletion</h2>
           <p>
-            WarpFetch keeps local download records, preferences, receipts, tags, workspaces, saved server profiles, trust records, and recovery state for as long as needed to provide the features you use, unless you delete or clear that data through the app, browser extension, macOS, or your browser's controls.
+            WarpFetch keeps local download records, preferences, tags, workspaces, saved server profiles, trust records, and recovery state for as long as needed to provide the features you use, unless you delete or clear that data through the app, browser extension, macOS, or your browser's controls.
           </p>
           <ul>
+            <li>Starter-completion receipts remain in the app's local Application Support data so the one-time three-download allowance remains accurate. Clearing download history does not delete them. They remain until that local app data is removed.</li>
             <li>Downloaded files remain in the save locations you choose until you delete them.</li>
             <li>Saved site credentials remain in the macOS Keychain until you remove them from the app's credential manager or from Keychain Access.</li>
             <li>Browser extension settings and small operational records remain in the browser's local extension storage until cleared or until the extension is removed.</li>
@@ -475,7 +480,7 @@
             <li>Support emails and attachments you send may be retained as needed to respond to your request, maintain support records, comply with legal obligations, and protect against abuse.</li>
           </ul>
           <p>
-            Because WarpFetch is local-first and does not maintain a WarpFetch user account system, most app data can be controlled directly from your Mac. Uninstalling the app may not automatically remove downloaded files, browser extension storage, saved Keychain credentials, or files you manually exported.
+            Because WarpFetch is local-first and does not maintain a WarpFetch user account system, most app data can be controlled directly from your Mac. Uninstalling the app may not automatically remove its Application Support data, downloaded files, browser extension storage, saved Keychain credentials, or files you manually exported.
           </p>
         </section>
 
